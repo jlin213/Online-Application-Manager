@@ -1,0 +1,16 @@
+html, body, #react-root, #react-root>main, #react-root>main>div{
+  height: 100%
+}
+
+.jobListing{
+	width: 100%;
+	height: 12%;
+	// border-radius: 5px;
+	border: 2px solid black;
+	margin: 2px;
+
+}
+.box{
+	width: 50%;
+	height: 100%;
+}

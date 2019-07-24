@@ -1,21 +1,20 @@
-import { FlowRouter } from 'meteor/kadira:flow-router';
-import { BlazeLayout } from 'meteor/kadira:blaze-layout';
+import { FlowRouter } 					from 'meteor/kadira:flow-router';
+import { Meteor} 						from 'meteor/meteor'; 
+import { mount } 						from 'react-mounter';
+import { MainLayout } 					from '../../ui/layouts/mainlayout.jsx';
+import React 							from 'react';
 
-// Import needed templates
-import '../../ui/layouts/body/body.js';
-import '../../ui/pages/home/home.js';
-import '../../ui/pages/not-found/not-found.js';
 
-// Set up all routes in the app
+import Header 							from '../../ui/components/Header.js';
+import JobSelector 						from "../../ui/components/JobSelector.js";
+
 FlowRouter.route('/', {
-  name: 'App.home',
-  action() {
-    BlazeLayout.render('App_body', { main: 'App_home' });
-  },
-});
+	action: function(params){
+		mount(MainLayout, {
+			header: <Header/>,
+			jobselector: <JobSelector/>,
 
-FlowRouter.notFound = {
-  action() {
-    BlazeLayout.render('App_body', { main: 'App_notFound' });
-  },
-};
+		});
+	}
+
+});
