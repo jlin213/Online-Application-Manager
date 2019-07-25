@@ -1,5 +1,16 @@
 html, body, #react-root, #react-root > main, #react-root > main > div {
-  height: 100%; }
+  height: 100%;
+  margin-top: 0px;
+  overflow: auto;
+  margin-left: 0px;
+  margin-right: 0px; }
+
+li {
+  list-style-type: none;
+  display: inline-block;
+  margin-right: 5px;
+  font-family: Hei;
+  color: white; }
 
 .jobListing {
   width: 100%;
@@ -10,5 +21,27 @@ html, body, #react-root, #react-root > main, #react-root > main > div {
 .box {
   width: 50%;
   height: 100%; }
+
+.navbar {
+  background-color: #B0CDD9 !important;
+  margin-top: 0px;
+  margin-left: 0px;
+  margin-right: 10px;
+  overflow: auto; }
+
+#navbar {
+  font-size: 20px;
+  text-align: right; }
+
+#title {
+  position: absolute;
+  overflow: visible;
+  white-space: nowrap;
+  text-align: left;
+  font-family: Hei;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 25px;
+  color: white; }
 
 /*# sourceMappingURL=main.css.map */
