@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 
-export const MainLayout = ({header, jobselector}) => (
-	<main className="w-100 h-100">
+export const MainLayout = ({header, content}) => (
+	<main className="w-100 h-100 bg">
 			{header}
-			{jobselector}
+			{content}
     </main>
 );

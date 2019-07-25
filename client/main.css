@@ -1,16 +1,21 @@
-html, body, #react-root, #react-root > main, #react-root > main > div {
+html, body, #react-root, #react-root > main {
   height: 100%;
   margin-top: 0px;
   overflow: auto;
   margin-left: 0px;
-  margin-right: 0px; }
+  margin-right: 0px;
+  margin-bottom: 0px; }
 
-li {
+.nav-itemlst {
   list-style-type: none;
   display: inline-block;
   margin-right: 5px;
   font-family: Hei;
-  color: white; }
+  color: white;
+  margin-right: 30px; }
+
+.bg {
+  background-color: #B0CDD9 !important; }
 
 .jobListing {
   width: 100%;
@@ -41,7 +46,43 @@ li {
   font-family: Hei;
   font-style: normal;
   font-weight: normal;
-  font-size: 25px;
+  font-size: 30px;
+  color: white;
+  margin-left: 10px;
+  list-style-type: none;
+  margin-bottom: 10px; }
+
+.landing-page {
+  height: 90%; }
+
+.resume {
+  position: fixed;
+  margin-top: 3%;
+  margin-left: 40%; }
+
+.landing-header {
+  width: 100%;
+  height: 10%;
+  position: fixed;
+  text-align: center;
+  font-family: Toppan Bunkyu Gothic;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 35px;
+  margin-top: 35%;
+  font-weight: bold;
   color: white; }
+
+.landing-header1 {
+  position: absolute;
+  width: 100%;
+  height: 10%;
+  text-align: center;
+  font-family: Toppan Bunkyu Gothic;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  color: #707070;
+  margin-top: 40%; }
 
 /*# sourceMappingURL=main.css.map */

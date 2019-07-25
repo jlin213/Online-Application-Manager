@@ -11,16 +11,17 @@ export default class Header extends Component{
 		    
 		        <div className= "collapse navbar-collapse" id = "navbar"> 
 		            <ul className="navbar-nav ml-auto">
+		 				<li id="title"> JOBHUNTER</li>
 		                <li className="nav-item nav-itemlst">
 		                  <a className= "nav-link"> Home </a>
 		                </li>   
-		                <li className="nav-item">
+		                <li className="nav-item nav-itemlst">
 		                  <a className= "nav-link"> About </a>
 		                </li>
-		                <li className="nav-item">
+		                <li className="nav-item nav-itemlst">
 		                  <a className = "nav-link"> Sign up </a>
 		                </li>
-		                <li className="nav-item">
+		                <li className="nav-item nav-itemlst">
 		                  <a className= "nav-link"> Sign in </a>
 		                </li>
 		            </ul> 
@@ -28,9 +29,7 @@ export default class Header extends Component{
 		        <div style={{float : 'right', paddingRight : '7px'}}>
 				    	<AccountsUIWrapper/>
 				</div>
-				<div className="justify-content-end align-self-center m-1">
-	 				<div id="title"> JOBHUNTER</div>
-				</div>
+
     		</nav>
 		);
 	}
