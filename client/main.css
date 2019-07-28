@@ -104,4 +104,33 @@ html, body, #react-root, #react-root > main {
   margin-left: 45%;
   border: none; }
 
+form {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto; }
+
+label,
+input {
+  display: block;
+  width: 100%; }
+
+label {
+  margin-bottom: 5px;
+  height: 22px; }
+
+input {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid #777; }
+
+input.error {
+  border-color: red; }
+
+.input-feedback {
+  color: #eb3636;
+  margin-top: -15px;
+  font-size: 14px;
+  margin-bottom: 20px; }
+
 /*# sourceMappingURL=main.css.map */
