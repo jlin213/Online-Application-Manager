@@ -5,9 +5,10 @@ import { MainLayout } 					from '../../ui/layouts/mainlayout.jsx';
 import React 							from 'react';
 
 
-import Header 							from '../../ui/components/Header.js';
-import JobSelector 						from "../../ui/components/JobSelector.js";
+import Header 							from '../../ui/components/Header.jsx';
+import JobSelector 						from "../../ui/components/JobSelector.jsx";
 import LandingPage 						from '../../ui/components/LandingPage.jsx';
+
 
 FlowRouter.route('/', {
 	action: function(params){
@@ -18,4 +19,16 @@ FlowRouter.route('/', {
 		});
 	}
 
+});
+
+import Login 							from '../../ui/components/Login.jsx'
+
+FlowRouter.route('/login', {
+	name: "Login",
+	action:function (params){
+		mount(MainLayout, {
+			header: <Header/>,
+			content: <Login/>,
+		});
+	}
 });

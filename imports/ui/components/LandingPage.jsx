@@ -15,6 +15,7 @@ export default class LandingPage extends Component{
 				<div className="landing-header1">
 					We help you keep track your applications and set reminders to follow up!
 				</div>
+				<button className="landing-button">Get Started</button>
 			</div>
 		);
 	}

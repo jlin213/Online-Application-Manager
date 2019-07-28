@@ -85,4 +85,23 @@ html, body, #react-root, #react-root > main {
   color: #707070;
   margin-top: 40%; }
 
+.landing-button {
+  background-color: #d1389c;
+  position: absolute;
+  overflow: hidden;
+  width: 10%;
+  height: 6%;
+  text-align: center;
+  font-family: Hiragino Maru Gothic Pro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 23px;
+  color: white;
+  border-style: none;
+  border-radius: 10	px;
+  display: inline-block;
+  margin-top: 43%;
+  margin-left: 45%;
+  border: none; }
+
 /*# sourceMappingURL=main.css.map */
