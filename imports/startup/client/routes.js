@@ -56,7 +56,7 @@ import ValidatedRegisterForm 			from '../../ui/components/ValidatedRegisterForm.
 FlowRouter.route('/signup', {
 	name: "Sign up", 
 	action: function(params) {
-		if (Meteor.loggingIn()){
+		if (Meteor.user()){
 			FlowRouter.go('/home');
 		}else{
 		mount(MainLayout, {
@@ -66,3 +66,15 @@ FlowRouter.route('/signup', {
 	}
 	}
 })
+
+FlowRouter.route('/dashboard', {
+	name: "Dashboard",
+	action: function(params){
+		if(!Meteor.user()){
+			FlowRouter.go('/home');
+		}else{
+			mount(MainLayout, {header: <Header/>})
+		}
+	}
+})
+

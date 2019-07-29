@@ -10,12 +10,16 @@ const ValidatedLoginForm = () => (
       setTimeout(() => {
             var email = $('[name=email]').val();
             var password = $('[name=password]').val();
-            Accounts.createUser({
+            const userId= Accounts.createUser({
                 email: email,
                 password: password
             });
+            if(!userId){
 
-        console.log("Created user", values);
+            }else{
+              console.log("Created user", values);
+
+            }
         setSubmitting(false);
       }, 500);
     }}
