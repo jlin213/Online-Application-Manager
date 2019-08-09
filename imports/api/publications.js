@@ -1,11 +1,10 @@
 import { Meteor } from 'meteor/meteor';
-import { abyssDB } from '../abyssDB.jsx';
-import { abyssCommentsDB } from '../abyssDB.jsx';
+import {joblistingDB} from './joblistingDB.js' ;
 
 if (Meteor.isServer) {
 	// This code only runs on the server 
 	Meteor.publish('joblisting.all', function() {
-		return joblisting.find();
+		return joblistingDB.find();
 	});
 
 	Meteor.publish('userCount', function() {

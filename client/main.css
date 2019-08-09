@@ -6,6 +6,9 @@ html, body, #react-root, #react-root > main {
   margin-right: 0px;
   margin-bottom: 0px; }
 
+.h-100 {
+  height: 100%; }
+
 .nav-itemlst {
   list-style-type: none;
   display: inline-block;
@@ -18,27 +21,29 @@ html, body, #react-root, #react-root > main {
   background-color: #B0CDD9 !important; }
 
 .jobListing {
-  width: 100%;
+  width: 95%;
   height: 12%;
-  border: 2px solid black;
-  margin: 2px; }
+  border: 1.5px solid #707070;
+  border-bottom: none;
+  border-left: none; }
 
 .box {
-  width: 50%;
-  height: 100%; }
+  width: 95%;
+  height: 90%;
+  overflow: scroll; }
 
 .navbar {
   background-color: #B0CDD9 !important;
-  margin-top: 0px;
-  margin-left: 0px;
+  margin-top: 10px;
+  margin-left: 5px;
   margin-right: 10px;
-  overflow: auto; }
+  overflow: hidden; }
 
 #navbar {
   font-size: 20px;
   text-align: right; }
 
-#title {
+.title {
   position: absolute;
   overflow: visible;
   white-space: nowrap;
@@ -103,6 +108,56 @@ html, body, #react-root, #react-root > main {
   margin-top: 43%;
   margin-left: 45%;
   border: none; }
+
+.w-40 {
+  width: 40%; }
+
+.w-50 {
+  width: 50%; }
+
+.box {
+  margin-left: 10px; }
+
+.loginbox {
+  background-color: #E1EBF0;
+  border-style: solid;
+  border-width: 1.5px;
+  border-color: #707070;
+  border-radius: 10px;
+  padding: 70px;
+  position: absolute;
+  overflow: visible;
+  width: 28%;
+  height: 60%;
+  left: 35%;
+  top: 20%; }
+
+.bgbox {
+  background-color: white; }
+
+.bgleft {
+  margin-left: 10%;
+  padding-top: 5%; }
+
+.listing {
+  font-family: Georgia;
+  font-color: #654C4C; }
+
+.listing-company {
+  font-size: 30px; }
+
+.listing-position {
+  font-size: 20px; }
+
+.listing-date {
+  font-size: 15px; }
+
+.add-button {
+  width: 95%; }
+
+.bar {
+  width: 100%;
+  height: 8%; }
 
 form {
   max-width: 500px;

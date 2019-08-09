@@ -10,7 +10,7 @@ const ValidatedLoginForm = () => (
       setTimeout(() => {
             Meteor.loginWithPassword(values.email, values.password, function(error){
             if (!error){
-              FlowRouter.go("/home");
+              FlowRouter.go("/dashboard");
 
             }else{
               if(error.reason == "Incorrect password"){

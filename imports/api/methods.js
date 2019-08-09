@@ -4,22 +4,22 @@ import { joblistingDB } 						from './joblistingDB.js';
 
 Meteor.methods({
 	'joblisting.add'(company, position, date, status, dateContacted, note){
+		var user = Meteor.user();
+
 		try{
-			joblistingDB.update({
-				$setOnInsert: {
-					email: Meteor.user().email
+			joblistingDB.insert({
+					email: user.emails[0].address,
 					company: company, 
 					position: position, 
 					date: date, 
 					status: status, 
 					dateContacted: dateContacted, 
 					note: note
-
-				}
-			}, {upsert: true}
-			)
+					
+				})
 		}catch(e){
-			throw new Meteor.Error("duplicate-error");
+			console.log(e);
+			// throw new Meteor.Error("duplicate-error");
 		}
 	}
 })

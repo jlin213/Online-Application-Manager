@@ -6,7 +6,6 @@ import React 							from 'react';
 
 
 import Header 							from '../../ui/components/Header.jsx';
-import JobSelector 						from "../../ui/components/JobSelector.jsx";
 import LandingPage 						from '../../ui/components/LandingPage.jsx';
 
 FlowRouter.route('/', {
@@ -23,11 +22,16 @@ FlowRouter.route('/', {
 
 FlowRouter.route('/home', {
 	action: function(params){
-		mount(MainLayout, {
+		if(Meteor.user()){
+			FlowRouter.go('/dashboard')
+		}else{
+			mount(MainLayout, {
 			header: <Header/>,
 			content: <LandingPage/>,
 
-		});
+			});
+		}
+
 	}
 
 });
@@ -44,7 +48,7 @@ FlowRouter.route('/login', {
 		}else{
 			mount(MainLayout, {
 			header: <Header/>,
-			content: <ValidatedLoginForm/>,
+			content: <Login/>,
 		});
 		}
 		
@@ -67,14 +71,21 @@ FlowRouter.route('/signup', {
 	}
 })
 
+import Dashboard 						from "../../ui/components/Dashboard.js";
+
 FlowRouter.route('/dashboard', {
 	name: "Dashboard",
 	action: function(params){
-		if(!Meteor.user()){
-			FlowRouter.go('/home');
-		}else{
-			mount(MainLayout, {header: <Header/>})
+		// if(!Meteor.user()){
+		// 	FlowRouter.go('/home')
+		// }else{
+			mount(MainLayout, {
+				header: <Header/>,
+				content: <Dashboard/>
+			})
+		// }
+
 		}
-	}
+	
 })
 

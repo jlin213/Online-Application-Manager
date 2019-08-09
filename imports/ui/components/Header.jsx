@@ -1,5 +1,4 @@
 import React, { Component } 			from 'react';
-import AccountsUIWrapper				from './AccountsUIWrapper.js'; 
 import { Meteor } 						from 'meteor/meteor';
 import { FlowRouter } 					from 'meteor/kadira:flow-router';
 export default class Header extends Component{
@@ -78,24 +77,25 @@ export default class Header extends Component{
 		 //                  <a href= "#" onClick = {this.handleLogout}className= "nav-link"> Logout</a>
 		 //        </li>)
 			// }
-			<nav className="navbar navbar-expand-sm navbar-light bg-light d-flex mb-0 ">
-		        <div className= "collapse navbar-collapse" id = "navbar"> 
-		            <ul className="navbar-nav ml-auto">
-		 				<li id="title"> JOBHUNTER</li>
-		                <li className="nav-item nav-itemlst">
-		                  <a href = "/home" className= "nav-link"> Home </a>
-		                </li>   
-		                <li className="nav-item nav-itemlst">
-		                  <a className= "nav-link"> About </a>
-		                </li>
-		                <li className="nav-item nav-itemlst">
-		                  <a href = "/signup"className = "nav-link"> Sign up </a>
-		                </li>
-		                {loginButton}
-		            </ul> 
-		        </div>
-
-    		</nav>
+			<div className = "container-fluid"> 
+				<nav className="navbar navbar-expand-sm navbar-light bg-light mb-0">
+					<div className = "title"> JOBHUNTER</div> 
+			        <div className= "collapse navbar-collapse navbar-right" id = "navbar"> 
+			            <ul className="navbar-nav w-100 ">
+			                <li className="nav-item nav-itemlst">
+			                  <a href = "/home" className= "nav-link"> Home </a>
+			                </li>   
+			                <li className="nav-item nav-itemlst">
+			                  <a className= "nav-link"> About </a>
+			                </li>
+			                <li className="nav-item nav-itemlst">
+			                  <a href = "/signup"className = "nav-link"> Sign up </a>
+			                </li>
+			                {loginButton}
+			            </ul> 
+			        </div>
+	    		</nav>
+    		</div> 
 		);
 	}		
 
