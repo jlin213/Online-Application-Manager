@@ -5,9 +5,10 @@ import { joblistingDB } 						from './joblistingDB.js';
 Meteor.methods({
 	'joblisting.add'(company, position, date, status, dateContacted, note){
 		var user = Meteor.user();
-
+		var num = joblistingDB.find({}).count();
 		try{
 			joblistingDB.insert({
+					jobId: num,
 					email: user.emails[0].address,
 					company: company, 
 					position: position, 
@@ -15,7 +16,6 @@ Meteor.methods({
 					status: status, 
 					dateContacted: dateContacted, 
 					note: note
-					
 				})
 		}catch(e){
 			console.log(e);
