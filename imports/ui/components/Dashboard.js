@@ -1,13 +1,20 @@
 import React, {Component} 					from 'react'; 
 import JobSelector							from './JobSelector.jsx'; 
+import DisplayJob							from './DisplayJobs.jsx';
 
 export default class Dashboard extends Component{
 	constructor(props){
 		super(props); 
 		this.state = {
-			selected: "", 
+			selected: -1, 
 		}
+	this.selectState = this.selectState.bind(this); 
+	}
 
+	selectState(id){
+		this.setState({
+			selected: id
+		})
 	}
 
 	render(){
@@ -15,10 +22,14 @@ export default class Dashboard extends Component{
 			<div className = "w-100 h-100 bgbox">
 				<div className = "w-50 h-100 ">
 					<div className = "box bgleft">
-						<JobSelector/>
+						<JobSelector selectState={this.selectState.bind(this)}/>					
 					</div> 
 				</div> 
-
+				<div className ="w-50 h-100">
+					<div className = "box bgright">
+						<DisplayJob selected={this.state.selected}/>
+					</div>  
+				</div>
 			</div> 
 		)
 	}

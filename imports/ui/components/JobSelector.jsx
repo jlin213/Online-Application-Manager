@@ -10,7 +10,9 @@ class JobSelector extends Component {
 		super(props); 
 		this.state= {
 			add: false,
+			sort: "",
 		}	
+		this.handleClick = this.handleClick.bind(this);
 	}
 
 	// generateJobList(){
@@ -18,22 +20,48 @@ class JobSelector extends Component {
 	// 	//database call
 	
 	// }
-
+	handleClick(event){
+		event.preventDefault();
+		this.props.selectState(event.currentTarget.id);
+	}
 	renderJobList(){
-		console.log(this.props.joblisting.company);
 		if (this.props.joblisting.length == 0){
 			return <div> No applications added.</div>
 		}else{
-			const listItems = this.props.joblisting.map((listing) => {
-			return (
-				<div className = "jobListing">
-					<div className="listing listing-company">{listing.company}</div>
-					<div className="listing listing-position">{listing.position}</div>
-					<div className="listing listing-date">{listing.date}</div>
-				</div> 
-			)
-			});
-		return listItems;
+			var listItems;
+			if (this.state.sort == "company"){
+				listItems = this.props.joblistingTitle.map((listing) => {
+				return (
+					<div className = "jobListing" id={listing.jobId} onClick={this.handleClick}>
+						<div className="listing listing-company">{listing.company}</div>
+						<div className="listing listing-position">{listing.position}</div>
+						<div className="listing listing-date">{listing.date}</div>
+					</div> 
+				)
+				});
+			}else if (this.state.sort == "date"){
+				var listItems = this.props.joblistingDate.map((listing) => {
+				return (
+					<div className = "jobListing" id={listing.jobId} onClick={this.handleClick}>
+						<div className="listing listing-company">{listing.company}</div>
+						<div className="listing listing-position">{listing.position}</div>
+						<div className="listing listing-date">{listing.date}</div>
+					</div> 
+				)
+				});
+			}
+			else{
+				var listItems = this.props.joblisting.map((listing) => {
+					return (
+						<div className = "jobListing" id={listing.jobId}  onClick={this.handleClick}>
+							<div className="listing listing-company">{listing.company}</div>
+							<div className="listing listing-position">{listing.position}</div>
+							<div className="listing listing-date">{listing.date}</div>
+						</div> 
+					)
+				});
+				}
+			return listItems;
 
 		}
 		
@@ -47,6 +75,11 @@ class JobSelector extends Component {
 				add:false
 			})
 		})
+	}
+	sortState(state){
+		this.setState({
+			sort: state,
+		})
 
 	}
 
@@ -54,7 +87,7 @@ class JobSelector extends Component {
 		return (
 			<div className= "h-100">
 				<div>
-					<SortBar/>
+					<SortBar sortState={this.sortState.bind(this)} sort={this.props.sort}/>
 				</div>
 				<div className="d-flex flex-wrap flex-row box">
 					{this.renderJobList()}
@@ -72,8 +105,12 @@ export default withTracker((props) => {
   		if (user && user.emails){
   			return {
 				joblisting: joblistingDB.find({email: user.emails[0].address
-	 			}).fetch()}
-			}else{
+	 			}).fetch(),
+	 			joblistingTitle: joblistingDB.find({}, {sort: {company: 1}}).fetch(),
+	 			joblistingDate: joblistingDB.find({}, {sort: {date: 1}}).fetch()
+			}
+			
+		}else{
 			return{
 				joblisting: joblistingDB.find({}).fetch()
 			}

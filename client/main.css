@@ -1,7 +1,7 @@
 html, body, #react-root, #react-root > main {
   height: 100%;
   margin-top: 0px;
-  overflow: auto;
+  overflow: hidden;
   margin-left: 0px;
   margin-right: 0px;
   margin-bottom: 0px; }
@@ -133,10 +133,14 @@ html, body, #react-root, #react-root > main {
   top: 20%; }
 
 .bgbox {
+  display: flex;
   background-color: white; }
 
 .bgleft {
   margin-left: 10%;
+  padding-top: 3%; }
+
+.bgright {
   padding-top: 5%; }
 
 .listing {
@@ -156,8 +160,26 @@ html, body, #react-root, #react-root > main {
   width: 95%; }
 
 .bar {
-  width: 100%;
-  height: 8%; }
+  margin-bottom: 10px; }
+
+.dropdown {
+  width: 10%;
+  display: inline-block; }
+
+.dropdown > .dropdown-menu {
+  position: relative;
+  left: auto !important;
+  float: none !important;
+  margin: auto;
+  text-align: center;
+  width: 2%; }
+
+.detailsBox {
+  width: 90%;
+  height: 80%;
+  margin: 5%;
+  border: 1.5px solid #707070;
+  overflow: hidden; }
 
 form {
   max-width: 500px;
