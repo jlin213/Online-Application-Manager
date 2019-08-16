@@ -11,7 +11,7 @@ class CalendarView extends Component {
     super(props);
     this.state ={
       calendarWeekends: true,
-      calendarEvents: []
+      calendarEvents:[]
     }
     this.renderEvents = this.renderEvents.bind(this);
 
@@ -39,7 +39,7 @@ class CalendarView extends Component {
             plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin ]}
             ref={ this.calendarComponentRef }
             weekends={ this.state.calendarWeekends }
-            events={ this.state.calendarEvents }
+            events={this.state.calendarEvents}
             dateClick={ this.handleDateClick }
             />
         </div>
@@ -52,32 +52,28 @@ class CalendarView extends Component {
       calendarWeekends: !this.state.calendarWeekends
     })
   }
-
   gotoPast = () => {
     let calendarApi = this.calendarComponentRef.current.getApi()
     calendarApi.gotoDate('2000-01-01') // call a method on the Calendar object
   }
-
+  //event source
   renderEvents(){
     var lst = this.props.joblisting.map((item) => {
-    var date = new Date(item.date); 
       return(
-        [ // initial event data
-        { title: item.company, start: item.date}
-        ]   
+        // initial event data
+        { title: item.company, 
+          start: new Date(item.date),
+          allDay: true
+        }
       )
     })
-    console.log(lst);
     if (this.state.calendarEvents.length< lst.length){
       this.setState({
-      calendarEvents: lst
+        calendarEvents: lst
       })
     }
-    console.log(this.state.calendarEvents);
     return lst;
   }
-
-
 
   // handleDateClick = (arg) => {
   //   if (confirm('Would you like to add an event to ' + arg.dateStr + ' ?')) {
@@ -91,7 +87,6 @@ class CalendarView extends Component {
   //   }
   // }
 }
-
 export default withTracker((props) => {
   Meteor.subscribe('joblisting.all');
   var user = Meteor.user();
