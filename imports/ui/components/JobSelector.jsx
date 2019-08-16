@@ -142,8 +142,10 @@ export default withTracker((props) => {
   			return {
 				joblisting: joblistingDB.find({email: user.emails[0].address
 	 			}).fetch(),
-	 			joblistingTitle: joblistingDB.find({}, {sort: {company: 1}}).fetch(),
-	 			joblistingDate: joblistingDB.find({}, {sort: {date: 1}}).fetch()
+	 			joblistingTitle: joblistingDB.find({email: user.emails[0].address
+	 			}, {sort: {company: 1}}).fetch(),
+	 			joblistingDate: joblistingDB.find({email: user.emails[0].address
+	 			}, {sort: {date: 1}}).fetch()
 			}
 			
 		}else{
