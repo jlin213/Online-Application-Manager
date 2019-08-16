@@ -25,7 +25,8 @@ html, body, #react-root, #react-root > main {
   height: 12%;
   border: 1.5px solid #707070;
   border-bottom: none;
-  border-left: none; }
+  border-left: none;
+  position: relative; }
 
 .box {
   width: 95%;
@@ -155,6 +156,11 @@ html, body, #react-root, #react-root > main {
 
 .listing-date {
   font-size: 15px; }
+
+.delete-icon {
+  position: absolute;
+  top: -13px;
+  right: 5px; }
 
 .add-button {
   width: 95%; }

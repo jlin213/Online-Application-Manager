@@ -10,8 +10,6 @@ class DisplayJob extends Component {
 	getListing(){
 		var arr = []; 
 		for (var i = 0; i < this.props.joblisting.length; i++){
-			console.log(this.props.selected);
-			console.log(this.props.joblisting[i].jobId);
 			if(this.props.joblisting[i].jobId == this.props.selected){
 				arr.push(this.props.joblisting[i]);
 			}

@@ -39,9 +39,10 @@ export default class AddJobs extends Component{
 		this.setState({status: event.target.value});
 	}
 	handleSubmit(event){
+		var formatDate = moment(this.state.date).format("YYYY/MM/DD");
 		event.preventDefault();
-		if(this.state.company != "" && this.state.position != "" && moment(this.state.date).format("YYYY/MM/DD") != "" && this.state.status!= ""){
-			Meteor.call('joblisting.add', this.state.company, this.state.position, moment(this.state.date).format("YYYY/MM/DD"), this.status, this.state.dateContacted, this.state.note, function(err, result){
+		if(this.state.company != "" && this.state.position != "" && formatDate != "" && this.state.status!= ""){
+			Meteor.call('joblisting.add', this.state.company, this.state.position, formatDate, this.status, this.state.dateContacted, this.state.note, function(err, result){
 				if(err){
 					console.log(err);
 				}else{
@@ -60,29 +61,6 @@ export default class AddJobs extends Component{
 			add: false,
 		})
 	}
-handleSubmit(){
-	event.preventDefault();
-	if(this.state.company != "" && this.state.position != "" && this.state.date != "" && this.state.status!= ""){
-		Meteor.call('joblisting.add', this.state.company, this.state.position, this.state.date, this.status, this.state.dateContacted, this.state.note, function(err, result){
-			if(err){
-				console.log(err);
-			}else{
-				$('[id^="addJobs"]').modal('hide');
-			}
-		})
-	}
-	this.props.addState(true); 
-	this.setState({
-		company: "", 
-		position: "", 
-		date: "", 
-		status: "", 
-		dateContacted: "", 
-		note: "",
-		add: false,
-	})
-
-}
 	render(){
 		return (
 			<div className= "m-2">

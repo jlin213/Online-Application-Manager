@@ -3,6 +3,9 @@ import { withTracker } 							from 'meteor/react-meteor-data';
 import { joblistingDB } 						from '../../api/joblistingDB.js';
 import AddJobs									from './AddJobs.js';
 import SortBar									from './SortBar.jsx';
+import { IconContext } from "react-icons";
+import { FaTrashAlt } from "react-icons/fa";
+
 
 class JobSelector extends Component {
 
@@ -10,8 +13,10 @@ class JobSelector extends Component {
 		super(props); 
 		this.state= {
 			add: false,
-			sort: "",
+			sort: "", 
+			delete: false
 		}	
+		this.onClick = this.onClick.bind(this);
 		this.handleClick = this.handleClick.bind(this);
 	}
 
@@ -20,6 +25,24 @@ class JobSelector extends Component {
 	// 	//database call
 	
 	// }
+	onClick(event){
+		event.preventDefault();
+		console.log("delete");
+		this.setState({
+			delete: true
+		}, function(){
+			this.setState({
+				delete: false
+			})
+		});
+		Meteor.call('joblisting.delete', event.currentTarget.parentElement.parentElement.id, function(result, err){
+			if(err){
+				console.log(err);
+			}else{
+				console.log("success");
+			}
+		})
+	}
 	handleClick(event){
 		event.preventDefault();
 		this.props.selectState(event.currentTarget.id);
@@ -32,18 +55,27 @@ class JobSelector extends Component {
 			if (this.state.sort == "company"){
 				listItems = this.props.joblistingTitle.map((listing) => {
 				return (
-					<div className = "jobListing" id={listing.jobId} onClick={this.handleClick}>
-						<div className="listing listing-company">{listing.company}</div>
+					<div className = "jobListing" key={listing.jobId} id={listing.jobId} onClick={this.handleClick}>
+						<div className="listing listing-company">{listing.company}
+							<IconContext.Provider value={{ size: "0.5em"}}>
+								<a href="" className="delete-icon" onClick={this.onClick}><FaTrashAlt/></a> 
+							</IconContext.Provider>
+						</div>
 						<div className="listing listing-position">{listing.position}</div>
 						<div className="listing listing-date">{listing.date}</div>
-					</div> 
+						<FaTrashAlt/>
+					</div>
 				)
 				});
 			}else if (this.state.sort == "date"){
 				var listItems = this.props.joblistingDate.map((listing) => {
 				return (
-					<div className = "jobListing" id={listing.jobId} onClick={this.handleClick}>
-						<div className="listing listing-company">{listing.company}</div>
+					<div className = "jobListing" key={listing.jobId} id={listing.jobId} onClick={this.handleClick}>
+						<div className="listing listing-company">{listing.company}
+							<IconContext.Provider value={{ size: "0.5em"}}>
+									<a href="" className="delete-icon"><FaTrashAlt/></a> 
+							</IconContext.Provider>
+						</div>
 						<div className="listing listing-position">{listing.position}</div>
 						<div className="listing listing-date">{listing.date}</div>
 					</div> 
@@ -53,8 +85,12 @@ class JobSelector extends Component {
 			else{
 				var listItems = this.props.joblisting.map((listing) => {
 					return (
-						<div className = "jobListing" id={listing.jobId}  onClick={this.handleClick}>
-							<div className="listing listing-company">{listing.company}</div>
+						<div className = "jobListing" key={listing.jobId} id={listing.jobId}  onClick={this.handleClick}>
+							<div className="listing listing-company">{listing.company}
+								<IconContext.Provider value={{ size: "0.5em"}}>
+									<a href="" className="delete-icon" onClick={this.onClick}><FaTrashAlt/></a> 
+								</IconContext.Provider>
+							</div>
 							<div className="listing listing-position">{listing.position}</div>
 							<div className="listing listing-date">{listing.date}</div>
 						</div> 

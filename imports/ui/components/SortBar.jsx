@@ -24,12 +24,12 @@ export default class SortBar extends Component{
 	}
 	render(){
 		return(
-			<div class="btn-group bar">
-				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Sort by...</button>
-			    <ul class="dropdown-menu">
-			        <li> <a href="#" class="dropdown-item" onClick={this.onClickTitle.bind(this)}>Company Title</a> </li>
-			        <li> <a href="#" class="dropdown-item" onClick={this.onClickDate.bind(this)}>Applied date</a> </li>
-			        <div class="dropdown-divider"></div>
+			<div className="btn-group bar">
+				<button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown">Sort by...</button>
+			    <ul className="dropdown-menu">
+			        <li> <a href="#" className="dropdown-item" onClick={this.onClickTitle.bind(this)}>Company Title</a> </li>
+			        <li> <a href="#" className="dropdown-item" onClick={this.onClickDate.bind(this)}>Applied date</a> </li>
+			        <div className="dropdown-divider"></div>
 			    </ul>
 			 </div>
 		)

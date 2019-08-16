@@ -5,9 +5,10 @@ import { joblistingDB } 						from './joblistingDB.js';
 Meteor.methods({
 	'joblisting.add'(company, position, date, status, dateContacted, note){
 		var user = Meteor.user();
-
+		var num = joblistingDB.find({}).count();
 		try{
 			joblistingDB.insert({
+					jobId: num,
 					email: user.emails[0].address,
 					company: company, 
 					position: position, 
@@ -21,5 +22,19 @@ Meteor.methods({
 			console.log(e);
 			// throw new Meteor.Error("duplicate-error");
 		}
+	},
+	'joblisting.delete'(deleteId){
+		var i = parseInt(deleteId);
+		joblistingDB.remove({
+			jobId: i
+		}, function(err, res){
+			if(err){
+				console.log(err);
+			}else{
+				console.log("Remove listing");
+				console.log(joblistingDB.find({jobId: i}).count());
+			}
+		})
+		
 	}
 })
