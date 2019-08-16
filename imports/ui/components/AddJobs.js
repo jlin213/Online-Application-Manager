@@ -36,13 +36,14 @@ export default class AddJobs extends Component{
 	}
 	handleSelect(event){
 		event.preventDefault();
+		console.log(event.target.value);
 		this.setState({status: event.target.value});
 	}
 	handleSubmit(event){
 		var formatDate = moment(this.state.date).format("YYYY/MM/DD");
 		event.preventDefault();
 		if(this.state.company != "" && this.state.position != "" && formatDate != "" && this.state.status!= ""){
-			Meteor.call('joblisting.add', this.state.company, this.state.position, formatDate, this.status, this.state.dateContacted, this.state.note, function(err, result){
+			Meteor.call('joblisting.add', this.state.company, this.state.position, formatDate, this.state.status, this.state.dateContacted, this.state.note, function(err, result){
 				if(err){
 					console.log(err);
 				}else{

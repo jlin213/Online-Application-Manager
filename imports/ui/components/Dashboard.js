@@ -1,6 +1,7 @@
 import React, {Component} 					from 'react'; 
 import JobSelector							from './JobSelector.jsx'; 
 import DisplayJob							from './DisplayJobs.jsx';
+import CalendarView							from './CalendarView.jsx';
 
 export default class Dashboard extends Component{
 	constructor(props){
@@ -16,22 +17,27 @@ export default class Dashboard extends Component{
 			selected: id
 		})
 	}
-
 	render(){
-		return (
-			<div className = "w-100 h-100 bgbox">
-				<div className = "w-50 h-100 ">
-					<div className = "box bgleft">
-						<JobSelector selectState={this.selectState.bind(this)}/>					
-					</div> 
-				</div> 
-				<div className ="w-50 h-100">
-					<div className = "box bgright">
-						<DisplayJob selected={this.state.selected}/>
-					</div>  
-				</div>
-			</div> 
+		return(
+			<CalendarView/>
 		)
 	}
+	
+	// render(){
+	// 	return (
+	// 		<div className = "w-100 h-100 bgbox">
+	// 			<div className = "w-50 h-100 ">
+	// 				<div className = "box bgleft">
+	// 					<JobSelector selectState={this.selectState.bind(this)}/>					
+	// 				</div> 
+	// 			</div> 
+	// 			<div className ="w-50 h-100">
+	// 				<div className = "box bgright">
+	// 					<DisplayJob selected={this.state.selected}/>
+	// 				</div>  
+	// 			</div>
+	// 		</div> 
+	// 	)
+	// }
 
 }
