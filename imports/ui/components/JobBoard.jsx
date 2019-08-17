@@ -4,7 +4,7 @@ import DisplayJob							from './DisplayJobs.jsx';
 import CalendarView							from './CalendarView.jsx';
 import ViewData								from './ViewData.jsx';
 
-export default class Dashboard extends Component{
+export default class JobBoard extends Component{
 	constructor(props){
 		super(props); 
 		this.state = {

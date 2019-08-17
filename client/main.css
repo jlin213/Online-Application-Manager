@@ -144,6 +144,9 @@ html, body, #react-root, #react-root > main {
   left: 35%;
   top: 20%; }
 
+.about-bg {
+  background-color: white; }
+
 .bgbox {
   display: flex;
   background-color: white; }

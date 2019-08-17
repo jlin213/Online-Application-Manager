@@ -8,17 +8,22 @@ export default class Header extends Component{
 			loggedin: false,
 			loggedout: true,
 		};
+		this.handleLogout = this.handleLogout.bind(this);
+		this.renderSignin = this.renderSignin.bind(this);
+		this.renderAbout = this.renderAbout.bind(this);
+		this.handleClick = this.handleClick.bind(this);
 	}
 
 	getUser(){
 		return Meteor.user();
 	}
+
+
 	handleLogout(){
 		Meteor.logout(() => {
 			this.setState({loggedin: false});
 		}
 		);
-	
 	}	
 	handleClick(){	
 		if(Meteor.user() && !this.state.loggedin){
@@ -29,7 +34,7 @@ export default class Header extends Component{
 	renderSignin(value){
 		if (value == 'signin'){
 			return (<li className=" nav-itemlst nav-item">
-		  	<a href = "/login" onClick= {this.handleClick} className= "nav-link"> Sign in </a>
+		  	<a href = "/login" onClick = {this.handleClick}className= "nav-link"> Sign in </a>
 		  </li>)
 
 		}else{
@@ -37,46 +42,47 @@ export default class Header extends Component{
 			<a href= "/" onClick = {this.handleLogout.bind(this)}className= "nav-link"> Logout</a>
 		 </li>)
 		}
+	}
+
+	renderAbout(value){
+		if(value == 'signin'){
+			return (<li className=" nav-itemlst nav-item">
+		  	<a href = "/about" className= "nav-link"> About </a>
+		  </li>)
+
+		}else{
+			return (<li className="nav-item nav-itemlst">
+			<a href= "/dashboard" className= "nav-link"> Profile </a>
+		 </li>)
+		}
+	}
+
+	renderSignUp(){
+		return (
+			<li className="nav-item nav-itemlst">
+			   <a href = "/signup" className = "nav-link"> Sign up </a>
+			</li>
+		)
 		
 	}
 
+
 	render(){
 		let loginButton;
+		let aboutButton; 
+		let signupButton; 
 		if(!Meteor.user()){
 			loginButton = this.renderSignin('signin');
+			aboutButton = this.renderAbout('signin');
+			signupButton = this.renderSignUp();
 			console.log("sigin");
 		}
 		else if (Meteor.user()){
 			loginButton = this.renderSignin('logout');
+			aboutButton = this.renderAbout('logout');
 			console.log("logout");
 		}
-		// if(Meteor.user()  && this.state.signin == true){
-		// 		loginButton = this.renderSignin('logout');
-		// }
-		// else if (Meteor.user() && this.state.signin == false){
-		// 	this.setState({ signin: true});
-
-		// }
-		// else if (!Meteor.user() && this.state.signin == true){
-		// 	this.setState({ signin: false});
-
-		// }
-		// else{
-		// 	loginButton = this.renderSignin('signin');
-		// }
-		
 		return(
-
-			
-			// if(Meteor.login())){
-				// loginButton = ( <li className=" nav-itemlst nav-item">
-		  //                 <a href = "/login" className= "nav-link"> Sign in </a>
-		  //               </li>)
-			// }else{
-			// 	loginButton = (<li className="nav-item nav-itemlst">
-		 //                  <a href= "#" onClick = {this.handleLogout}className= "nav-link"> Logout</a>
-		 //        </li>)
-			// }
 			<div className = "container-fluid"> 
 				<nav className="navbar navbar-expand-sm navbar-light bg-light mb-0">
 					<div className = "title"> JOBHUNTER</div> 
@@ -85,12 +91,8 @@ export default class Header extends Component{
 			                <li className="nav-item nav-itemlst">
 			                  <a href = "/home" className= "nav-link"> Home </a>
 			                </li>   
-			                <li className="nav-item nav-itemlst">
-			                  <a className= "nav-link"> About </a>
-			                </li>
-			                <li className="nav-item nav-itemlst">
-			                  <a href = "/signup"className = "nav-link"> Sign up </a>
-			                </li>
+			                {aboutButton}
+			                {this.state.loggedin ? null : signupButton}
 			                {loginButton}
 			            </ul> 
 			        </div>

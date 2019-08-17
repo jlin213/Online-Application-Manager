@@ -4,9 +4,9 @@ import { mount } 						from 'react-mounter';
 import { MainLayout } 					from '../../ui/layouts/mainlayout.jsx';
 import React 							from 'react';
 
-
 import Header 							from '../../ui/components/Header.jsx';
 import LandingPage 						from '../../ui/components/LandingPage.jsx';
+import JobBoard 						from "../../ui/components/JobBoard.jsx";
 
 FlowRouter.route('/', {
 	action: function(params){
@@ -23,7 +23,10 @@ FlowRouter.route('/', {
 FlowRouter.route('/home', {
 	action: function(params){
 		if(Meteor.user()){
-			FlowRouter.go('/dashboard')
+			mount(MainLayout, {
+				header: <Header/>,
+				content: <JobBoard/>
+			})
 		}else{
 			mount(MainLayout, {
 			header: <Header/>,
@@ -41,7 +44,6 @@ import ValidatedLoginForm 				from '../../ui/components/ValidatedLoginForm.js';
 
 
 FlowRouter.route('/login', {
-	name: "Login",
 	action:function (params){
 		if (Meteor.loggingIn()){
 			FlowRouter.go('/home');
@@ -55,10 +57,9 @@ FlowRouter.route('/login', {
 	}
 });
 
-import ValidatedRegisterForm 			from '../../ui/components/ValidatedRegisterForm.js'
+import ValidatedRegisterForm 			from '../../ui/components/ValidatedRegisterForm.js';
 
 FlowRouter.route('/signup', {
-	name: "Sign up", 
 	action: function(params) {
 		if (Meteor.user()){
 			FlowRouter.go('/home');
@@ -69,23 +70,48 @@ FlowRouter.route('/signup', {
 		})
 	}
 	}
-})
+});
+import About 							from '../../ui/components/About.jsx';
+FlowRouter.route('/about', {
+	action: function(params){
+		if(Meteor.user()){
+			FlowRouter.go('/home');
+		}else{
+			mount(MainLayout, {
+				header: <Header/>, 
+				content: <About/>
+			})
+		}
+	}
+});
 
-import Dashboard 						from "../../ui/components/Dashboard.js";
-
+import Dashboard 						from '../../ui/components/Dashboard.jsx';
 FlowRouter.route('/dashboard', {
-	name: "Dashboard",
+	action: function(params){
+		if(!Meteor.user()){
+			FlowRouter.go('/home');
+		}else{
+			mount(MainLayout, {
+				header: <Header/>, 
+				content: <Dashboard/>
+			})
+		}
+	}
+});
+
+
+FlowRouter.route('/jobboard', {
 	action: function(params){
 		// if(!Meteor.user()){
 		// 	FlowRouter.go('/home')
 		// }else{
 			mount(MainLayout, {
 				header: <Header/>,
-				content: <Dashboard/>
+				content: <JobBoard/>
 			})
 		// }
 
 		}
 	
-})
+});
 

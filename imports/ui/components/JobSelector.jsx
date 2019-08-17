@@ -3,12 +3,11 @@ import { withTracker } 							from 'meteor/react-meteor-data';
 import { joblistingDB } 						from '../../api/joblistingDB.js';
 import AddJobs									from './AddJobs.js';
 import SortBar									from './SortBar.jsx';
-import { IconContext } from "react-icons";
-import { FaTrashAlt } from "react-icons/fa";
+import { IconContext } 							from "react-icons";
+import { FaTrashAlt } 							from "react-icons/fa";
 
 
 class JobSelector extends Component {
-
 	constructor(props){
 		super(props); 
 		this.state= {
@@ -19,12 +18,6 @@ class JobSelector extends Component {
 		this.onClick = this.onClick.bind(this);
 		this.handleClick = this.handleClick.bind(this);
 	}
-
-	// generateJobList(){
-	// 	return this.props.joblisting; 
-	// 	//database call
-	
-	// }
 	onClick(event){
 		event.preventDefault();
 		console.log("delete");
@@ -146,13 +139,10 @@ export default withTracker((props) => {
 	 			}, {sort: {company: 1}}).fetch(),
 	 			joblistingDate: joblistingDB.find({email: user.emails[0].address
 	 			}, {sort: {date: 1}}).fetch()
-			}
-			
+			}	
 		}else{
 			return{
 				joblisting: joblistingDB.find({}).fetch()
 			}
 		}
-  	
-
 })(JobSelector);
