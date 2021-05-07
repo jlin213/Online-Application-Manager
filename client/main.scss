@@ -161,8 +161,6 @@ html, body, #react-root, #react-root>main{
 }
 
 
-
-
 .bgbox{
 	display: flex;
 	background-color: white;
@@ -218,6 +216,30 @@ html, body, #react-root, #react-root>main{
 	margin: 5%;
 	border: 1.5px solid #707070;
 	overflow: hidden;
+}
+
+.view-data{
+	width: 70%;
+	margin-left: 5%;
+}
+.dashboard-right-1{
+	height: 30%;
+	margin-left: 5%;
+}
+
+.dashboard-right-2{
+	margin-top: 20%;
+	border: 1px solid;
+	border-radius: 1px; 
+	margin-left: 15%;
+}
+
+.link-box{
+	margin: 5%;
+}
+.link-margin{
+	margin-top: 1%;
+	margin-bottom: 1%;
 }
 
 //form

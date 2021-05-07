@@ -75,7 +75,7 @@ render(){
 	this.renderListing();
 	var graph = this.renderGraph();
 	return(
-		<div>
+		<div className="view-data">
 			{ this.state.show ? graph : null}
 		</div>
 	)

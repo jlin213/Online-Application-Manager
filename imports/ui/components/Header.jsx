@@ -85,7 +85,7 @@ export default class Header extends Component{
 		return(
 			<div className = "container-fluid"> 
 				<nav className="navbar navbar-expand-sm navbar-light bg-light mb-0">
-					<div className = "title"> JOBHUNTER</div> 
+					<div className = "title"> Arc</div> 
 			        <div className= "collapse navbar-collapse navbar-right" id = "navbar"> 
 			            <ul className="navbar-nav w-100 ">
 			                <li className="nav-item nav-itemlst">

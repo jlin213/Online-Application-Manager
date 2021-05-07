@@ -3,7 +3,7 @@ import { Meteor } 								from 'meteor/meteor';
 import { joblistingDB } 						from './joblistingDB.js';
 
 Meteor.methods({
-	'joblisting.add'(company, position, date, status, dateContacted, note){
+	'joblisting.add'(company, position, date, status, note, link){
 		var user = Meteor.user();
 		var num = joblistingDB.find({}).count();
 		try{
@@ -14,9 +14,8 @@ Meteor.methods({
 					position: position, 
 					date: date, 
 					status: status, 
-					dateContacted: dateContacted, 
-					note: note
-					
+					note: note,
+					link: link
 				})
 		}catch(e){
 			console.log(e);
